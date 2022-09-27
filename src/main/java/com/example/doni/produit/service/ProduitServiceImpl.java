@@ -25,6 +25,8 @@ public class ProduitServiceImpl implements ProduitService {
 
     @Override
     public Produit Addproduit(Produit produit, MultipartFile file) throws IOException {
+        produit.setPrixSac50Kg(produit.getPrixKg()*50);
+        produit.setPrixSac100kg(produit.getPrixKg()*100);
         String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
         produit.setPhoto(fileNamne);
         Produit mat = produitRepository.save(produit);
@@ -37,9 +39,11 @@ public class ProduitServiceImpl implements ProduitService {
     @Override
     public Produit UpdateProduit(Produit produit, Long id) {
         Produit existant = produitRepository.findById(id).get();
-        existant.setNomProd(produit.getNomProd());
+        existant.setNomProduit(produit.getNomProduit());
         existant.setDescription(produit.getDescription());
-        existant.setPrix(produit.getPrix());
+        existant.setPrixKg(produit.getPrixKg());
+        existant.setPrixSac50Kg(produit.getPrixKg()*50);
+        existant.setPrixSac100kg(produit.getPrixSac100kg());
         existant.setPhoto(produit.getPhoto());
         existant.setQuantite(produit.getQuantite());
         return produitRepository.save(existant);

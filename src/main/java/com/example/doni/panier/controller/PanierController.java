@@ -19,13 +19,18 @@ public class PanierController {
     public List<Panier> AllPanier(){
         return panierService.AllPanier();
     }
-    @PostMapping("AddPanier")
-    public Panier AddPanier(@RequestBody Panier panier){
-        return panierService.AddPanier(panier);
+    @PostMapping("AddPanier/{id}")
+    public Panier AddPanier(@RequestBody Panier panier,@PathVariable("id") Long id){
+        return panierService.AddPanier(panier,id);
     }
     @GetMapping("PanierById/{id}")
     public Panier PanierById(@PathVariable("id") Long id){
         return panierService.PanierById(id);
+    }
+
+    @GetMapping("PanierByPaysans/{id}")
+    public List<Panier> PanierByPaysans(@PathVariable("id") Long id){
+        return panierService.findPanierByPaysans(id);
     }
     @PutMapping("UpdatePanier/{id}")
     public Panier UpdatePanier(@RequestBody Panier panier,@PathVariable("id") Long id){

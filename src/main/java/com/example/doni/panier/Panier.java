@@ -1,6 +1,7 @@
 package com.example.doni.panier;
 
 import com.example.doni.produit.Produit;
+import com.example.doni.produit.Unite;
 import com.example.doni.produitAchete.ProduitAchete;
 import com.example.doni.utilisateur.paysans.Paysans;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,6 +22,9 @@ public class Panier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Unite unite;
+    private Long quantiteAchete;
+    private Long montant;
     @ManyToOne
     private Paysans paysans;
     @ManyToOne

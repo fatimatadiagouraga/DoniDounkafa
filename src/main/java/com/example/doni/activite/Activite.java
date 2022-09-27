@@ -1,14 +1,13 @@
 package com.example.doni.activite;
 
+import com.example.doni.produit.Produit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,5 +20,6 @@ public class Activite {
     private Long id;
     TypeActivite typeActivite;
     private String description;
-
+    @OneToMany(mappedBy = "activite")
+    private List<Produit> produits;
 }

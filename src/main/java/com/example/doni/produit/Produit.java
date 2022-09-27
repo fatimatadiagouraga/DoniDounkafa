@@ -1,5 +1,6 @@
 package com.example.doni.produit;
 
+import com.example.doni.activite.Activite;
 import com.example.doni.categorie.Categorie;
 import com.example.doni.panier.Panier;
 import com.example.doni.produitAchete.ProduitAchete;
@@ -23,11 +24,17 @@ public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomProd;
+    @Enumerated(value = EnumType.STRING)
+    private NomProduit nomProduit;
     private String description;
-    private long prix;
+    private long prixKg;
+    private long prixSac50Kg;
+    private Long prixSac100kg;
     private String photo;
     private Long quantite;
+    private boolean etat = true;
+    @ManyToOne
+    private Activite activite;
     @ManyToOne
     private Categorie categorie;
      @JsonIgnore

@@ -19,6 +19,7 @@ public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(value = EnumType.STRING)
     private Type type;
     @JsonIgnore
     @OneToMany(mappedBy = "categorie")

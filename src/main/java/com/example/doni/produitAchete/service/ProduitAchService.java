@@ -11,4 +11,6 @@ public interface ProduitAchService {
     ProduitAchete UpdateProduitAchete(ProduitAchete produitAchete,Long id);
     ProduitAchete ProduitAcheteById (Long id);
     void DeleteProduitAchete(Long id);
+
+
 }
