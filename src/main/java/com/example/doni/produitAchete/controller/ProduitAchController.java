@@ -32,8 +32,12 @@ public class ProduitAchController {
         return produitAchService.UpdateProduitAchete(produitAchete,id);
     }
     @PostMapping("AddProduitAchete")
-    public ProduitAchete AddProduitAchete(@RequestBody ProduitAchete categorie){
-        return produitAchService.AddProduitAchete(categorie);
+    public ProduitAchete AddProduitAchete(@RequestBody ProduitAchete produitAchete){
+        return produitAchService.AddProduitAchete(produitAchete);
+    }
+    @PostMapping("AddAllProduitAchete")
+    public String AddAllProduitAchete(@RequestBody List<ProduitAchete> listProduitAchete){
+        return produitAchService.AddProduitAcheterList(listProduitAchete);
     }
     @DeleteMapping("DeleteProduitAchete/{id}")
     public void DeleteProduitAchete(Long id){

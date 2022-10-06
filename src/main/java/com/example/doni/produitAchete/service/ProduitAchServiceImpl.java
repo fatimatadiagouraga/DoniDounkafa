@@ -6,6 +6,7 @@ import com.example.doni.produitAchete.repository.ProduitAchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ProduitAchServiceImpl implements ProduitAchService{
@@ -27,7 +28,7 @@ public class ProduitAchServiceImpl implements ProduitAchService{
     public ProduitAchete UpdateProduitAchete(ProduitAchete produitAchete, Long id) {
         ProduitAchete existant = produitAchRepository.findById(id).get();
         existant.setDate(produitAchete.getDate());
-        existant.setQuantiteAchetee(produitAchete.getQuantiteAchetee());
+
         return produitAchRepository.save(existant);
     }
 
@@ -39,5 +40,12 @@ public class ProduitAchServiceImpl implements ProduitAchService{
     @Override
     public void DeleteProduitAchete(Long id) {
       produitAchRepository.findById(id);
+    }
+
+    @Override
+    public String AddProduitAcheterList(List<ProduitAchete> produitAchetes) {
+        List<ProduitAchete> listProduitAche = new ArrayList<>();
+        produitAchRepository.saveAll(produitAchetes).forEach(listProduitAche::add);
+        return "Achat effectuer avec succès";
     }
 }

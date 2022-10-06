@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PanierRepository extends JpaRepository<Panier,Long> {
-    @Query(value = "SELECT id FROM Panier id WHERE id.paysans.id = :id")
+    @Query(value = "SELECT id FROM Panier id WHERE id.etat=false and id.paysans.id = :id")
     List<Panier> findPanierByPaysans(@Param("id") Long id);
 }

@@ -1,5 +1,6 @@
 package com.example.doni.panier;
 
+import com.example.doni.commande.Commande;
 import com.example.doni.produit.Produit;
 import com.example.doni.produit.Unite;
 import com.example.doni.produitAchete.ProduitAchete;
@@ -25,11 +26,12 @@ public class Panier {
     private Unite unite;
     private Long quantiteAchete;
     private Long montant;
+    private boolean etat= false;
     @ManyToOne
     private Paysans paysans;
     @ManyToOne
     private Produit produit;
     @JsonIgnore
     @OneToMany(mappedBy = "panier")
-    private List<ProduitAchete> produitAchetes;
+    private List<Commande> commandes;
 }

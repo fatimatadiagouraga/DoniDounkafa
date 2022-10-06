@@ -24,8 +24,8 @@ public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated(value = EnumType.STRING)
-    private NomProduit nomProduit;
+
+    private String nomProduit;
     private String description;
     private long prixKg;
     private long prixSac50Kg;

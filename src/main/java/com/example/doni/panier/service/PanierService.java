@@ -12,4 +12,5 @@ public interface PanierService {
     List<Panier> findPanierByPaysans(Long id);
     Panier PanierById(Long id);
     void DeletePanier(Long id);
+    Panier updatePanierByid(Panier panier,Long id);
 }

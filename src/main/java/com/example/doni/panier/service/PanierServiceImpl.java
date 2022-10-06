@@ -73,6 +73,8 @@ public class PanierServiceImpl implements PanierService{
     @Override
     public Panier UpdatePanier(Panier panier, Long id) {
         Panier existant = panierRepository.findById(id).get();
+        existant.setUnite(panier.getUnite());
+        existant.setQuantiteAchete(panier.getQuantiteAchete());
         existant.setPaysans(panier.getPaysans());
         existant.setProduit(panier.getProduit());
         return panierRepository.save(existant);
@@ -86,11 +88,20 @@ public class PanierServiceImpl implements PanierService{
 
     @Override
     public Panier PanierById(Long id) {
+        Panier e =panierRepository.findById(id).get();
+        e.setEtat(true);
         return panierRepository.findById(id).get();
     }
 
     @Override
     public void DeletePanier(Long id) {
         panierRepository.deleteById(id);
+    }
+
+    @Override
+    public Panier updatePanierByid(Panier panier,Long id) {
+        Panier existant = panierRepository.findById(id).get();
+        existant.setEtat(true);
+        return panierRepository.save(existant);
     }
 }

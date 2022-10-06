@@ -29,7 +29,9 @@ public class Paysans{
     private String prenom;
     private Date DateNaissance;
     private Long telephone;
+    @Enumerated(value = EnumType.STRING)
     private Sexe sexe;
+    @Enumerated(value = EnumType.STRING)
     private Statut statut;
     private LocalDate date = LocalDate.now();
     private String login;

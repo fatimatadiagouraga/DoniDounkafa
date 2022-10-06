@@ -36,6 +36,10 @@ public class PanierController {
     public Panier UpdatePanier(@RequestBody Panier panier,@PathVariable("id") Long id){
         return panierService.UpdatePanier(panier,id);
     }
+    @PutMapping("UpdatePanierEtat/{id}")
+    public Panier UpdatePanierEtat(@RequestBody Panier panier,@PathVariable("id") Long id){
+        return panierService.updatePanierByid(panier,id);
+    }
     @DeleteMapping("DeletePanier/{id}")
     public void DeletePanier(@PathVariable("id") Long id){
         panierService.DeletePanier(id);
